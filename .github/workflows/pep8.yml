@@ -1,0 +1,42 @@
+name: Vérification PEP8
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Lint PEP8
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : récupérer le code du dépôt
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      # Étape 2 : configurer Python
+      - name: Configurer Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'         # Met en cache les dépendances pip
+
+      # Étape 3 : installer les outils de linting
+      - name: Installer flake8 et ruff
+        run: |
+          pip install --upgrade pip
+          pip install flake8 ruff
+
+      # Étape 4 : lancer flake8
+      - name: Vérification PEP8 avec flake8
+        run: |
+          echo "--- Résultats flake8 ---"
+          flake8 src/ --statistics --count
+
+      # Étape 5 : lancer ruff (en mode check seulement, sans correction)
+      - name: Vérification avec ruff
+        run: |
+          echo "--- Résultats ruff ---"
+          ruff check src/

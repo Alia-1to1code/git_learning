@@ -1,0 +1,8 @@
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = [".git", "__pycache__", ".venv", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "N"]   # PEP8 + conventions de nommage
+ignore = ["E501"]                # Ignorer les lignes trop longues si Black gère
