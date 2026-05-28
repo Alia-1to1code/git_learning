@@ -33,10 +33,13 @@ jobs:
       # Étape 4 : lancer flake8
       - name: Vérification PEP8 avec flake8
         run: |
+          set +e
+
           echo "=============================="
           echo "      FLAKE8 STATISTICS"
           echo "=============================="
           flake8 src/ --statistics 
+          
           echo "=============================="
           echo "      FLAKE8 COUNT"
           echo "=============================="
