@@ -34,8 +34,11 @@ jobs:
       - name: Vérification PEP8 avec flake8
         run: |
           echo "=============================="
-          echo "      FLAKE8 RESULTS"
+          echo "      FLAKE8 STATISTICS"
           echo "=============================="
-          flake8 src/ --statistics --count 
-
+          flake8 src/ --statistics 
+          echo "=============================="
+          echo "      FLAKE8 COUNT"
+          echo "=============================="
+          flake8 src/  --count 
         
