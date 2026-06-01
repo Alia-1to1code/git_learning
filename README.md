@@ -1,3 +1,5 @@
+[![Vérification PEP8 - flake8](https://github.com/Alia-1to1code/git_learning/actions/workflows/pep8.yml/badge.svg)](https://github.com/Alia-1to1code/git_learning/actions/workflows/pep8.yml)
+
 # Apprentissage de Git et GitHub
 
 ## Description du projet
