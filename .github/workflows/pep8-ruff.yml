@@ -1,0 +1,41 @@
+name: Vérification PEP8 - ruff
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint PEP8 with ruff
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : récupérer le code du dépôt
+      - name: Checkout du code
+        uses: actions/checkout@v5
+
+      # Étape 2 : configurer Python
+      - name: Configurer Python 3.11
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+          cache: 'pip'         # Met en cache les dépendances pip
+
+      # Étape 3 : installer les outils de linting
+      - name: Installer ruff
+        run: |
+          pip install --upgrade pip
+          pip install ruff
+
+      # Étape 4 : lancer ruff
+      - name: Vérification PEP8 avec ruff
+        run: |
+          set +e
+
+          echo "=============================="
+          echo "      RUFF CHECK"
+          echo "=============================="
+          ruff check src/
