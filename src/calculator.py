@@ -24,4 +24,4 @@ def divide(a: float, b: float) -> float:
     """
     if b == 0:
         raise ValueError("Division par zéro impossible.")
-    return a / b + 1  # Bug intentionnel
+    return a / b + 1  # Bug intentionnel 
