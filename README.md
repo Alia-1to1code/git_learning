@@ -1,23 +1,58 @@
+
 [![Vérification PEP8 - flake8](https://github.com/Alia-1to1code/git_learning/actions/workflows/pep8.yml/badge.svg)](https://github.com/Alia-1to1code/git_learning/actions/workflows/pep8.yml)
+![Tests](https://github.com/Alia-1to1code/git_learning/actions/workflows/test.yml/badge.svg)
+![Docs](https://github.com/Alia-1to1code/git_learning/actions/workflows/docs.yml/badge.svg)
+
 
 # Apprentissage de Git et GitHub
 
-## Description du projet
+📖 **[Documentation en ligne](https://Alia-1to1code.github.io/git_learning/)**
 
-Ce repository est un exercice d'apprentissage conçu pour maîtriser Git et GitHub de façon progressive et pratique. L'objectif est de suivre le cycle complet d'un projet : créer et modifier des fichiers, les versionner localement, les synchroniser avec un dépôt distant, gérer des branches, résoudre des conflits et observer l'évolution du travail dans le temps.
+## Description
+
+`git_learning` est un dépôt d'exemple utilisé durant les cours pour apprendre :
+- les bases de Git (init, add, commit, push)
+- la gestion des branches et des pull requests
+- la résolution de conflits
+- l'automatisation avec **GitHub Actions** (linting, tests)
+- le déploiement de documentation via **GitHub Pages** (MkDocs)
+- les principes CI/CD simples
 
 <img src="https://1to1code-pictures.s3.eu-west-par.io.cloud.ovh.net/git/final.png" alt="github" style="width:80%; height:auto; display:block; margin:0 auto;" /> 
 
-## Architecture et structure
+## Démarrage rapide
 
-Le repository contient :
-- Des fichiers de démonstration et d'exercices
-- Un dossier de documentation avec les concepts clés
-- Des branches pour pratiquer les mécanismes de collaboration
+```bash
+git clone https://github.com/Alia-1to1code/git_learning.git
+cd git_learning
+python -m venv .venv
+source .venv/bin/activate  # macOS / Linux
+pip install -r requirements-dev.txt requirements-docs.txt
+```
 
-## Outils utilisés et prérequis
+Exécuter les tests et le linteur :
 
-- **Git (ligne de commande)** : pour versionnage local, staging, commits, branches et synchronisation
-- **GitHub.com** : pour héberger le repo, visualiser l'historique et pratiquer la collaboration à distance
-- **Visual Studio Code** (optionnel mais recommandé) pour éditer les fichiers et utiliser le terminal intégré
-- Aucune dépendance ou libraire à installer
+```bash
+pytest tests/
+flake8 .
+```
+
+Prévisualiser la documentation locale :
+
+```bash
+mkdocs serve
+# puis ouvrir http://127.0.0.1:8000
+```
+
+## Structure du dépôt
+
+- `docs/` : sources MkDocs (documentation)
+- `.github/workflows/` : workflows GitHub Actions (tests, docs, pep8)
+- `src/` : code source de l'exemple (module `calculator`)
+- `tests/` : tests unitaires
+- `requirements-*.txt` : dépendances pour dev (tests, mkdocs, linters)
+
+## Contribuer
+
+Suggestions rapides : ouvrez une branche `feature/...`, faites vos changements, puis créez une Pull Request. Les workflows vérifieront automatiquement le style et les tests.
+
