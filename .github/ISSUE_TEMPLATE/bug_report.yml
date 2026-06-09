@@ -1,0 +1,90 @@
+name: Rapport de bug
+description: Signaler un comportement incorrect ou inattendu
+title: "[BUG] "
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de prendre le temps de signaler ce bug.
+        Remplissez chaque section avec soin pour nous aider à le reproduire et le corriger.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description du bug
+      description: Décrivez clairement et brièvement le problème observé.
+      placeholder: "La fonction divide() retourne inf au lieu de lever une ValueError..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Étapes pour reproduire
+      description: Quelles actions mènent au bug ?
+      placeholder: |
+        1. Importer le module
+        2. Appeler la fonction avec...
+        3. Observer...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportement attendu
+      description: Que devrait-il se passer ?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportement observé
+      description: Que se passe-t-il réellement ?
+    validations:
+      required: true
+
+  - type: textarea
+    id: code_snippet
+    attributes:
+      label: Extrait de code (optionnel)
+      description: Collez ici le code permettant de reproduire le bug.
+      render: python
+
+  - type: dropdown
+    id: python_version
+    attributes:
+      label: Version Python
+      options:
+        - "3.10"
+        - "3.11"
+        - "3.12"
+        - "Autre"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Système d'exploitation
+      options:
+        - Ubuntu / Debian
+        - macOS
+        - Windows
+        - Autre
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Vérifications préalables
+      options:
+        - label: J'ai vérifié que ce bug n'a pas déjà été signalé
+          required: true
+        - label: J'ai testé avec la dernière version du dépôt
+          required: true

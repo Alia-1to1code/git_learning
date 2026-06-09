@@ -1,0 +1,58 @@
+name: Demande de fonctionnalité
+description: Proposer une nouvelle fonctionnalité ou amélioration
+title: "[FEATURE] "
+labels: ["enhancement"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Votre idée est la bienvenue ! Décrivez-la clairement pour que nous
+        puissions l'évaluer et l'implémenter.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problème à résoudre
+      description: Décrivez le problème ou le manque que cette fonctionnalité résoudrait.
+      placeholder: "Actuellement, il n'est pas possible de..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solution proposée
+      description: Décrivez la fonctionnalité que vous souhaitez voir ajoutée.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critères d'acceptation
+      description: Comment saurons-nous que la fonctionnalité est correctement implémentée ?
+      placeholder: |
+        - [ ] La fonction power(2, 3) retourne 8
+        - [ ] Des tests unitaires couvrent les cas nominaux
+        - [ ] La documentation est mise à jour
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives envisagées
+      description: Avez-vous considéré d'autres approches ?
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priorité estimée
+      options:
+        - Faible — amélioration de confort
+        - Moyenne — fonctionnalité utile
+        - Haute — bloquant pour mon usage
+    validations:
+      required: true
