@@ -25,3 +25,14 @@ def divide(a: float, b: float) -> float:
     if b == 0:
         raise ValueError("Division par zéro impossible.")
     return a / b
+
+
+def power(base: float, exponent: float) -> float:
+    """Retourne la base élevée à la puissance de l'exposant.
+
+    Raises:
+        TypeError: si la base ou l'exposant n'est pas un nombre.
+    """
+    if not isinstance(base, (int, float)) or not isinstance(exponent, (int, float)):
+        raise TypeError("La base et l'exposant doivent être des nombres.")
+    return base ** exponent

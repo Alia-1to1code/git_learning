@@ -1,7 +1,7 @@
 """Tests unitaires pour le module calculator."""
 
 import pytest
-from src.calculator import add, subtract, multiply, divide
+from src.calculator import add, subtract, multiply, divide, power
 
 
 class TestAdd:
@@ -48,3 +48,21 @@ class TestDivide:
     def test_division_par_zero_leve_exception(self):
         with pytest.raises(ValueError, match="Division par zéro impossible"):
             divide(5, 0)
+
+
+class TestPower:
+    def test_cas_classique(self):
+        assert power(2, 3) == 8.0
+
+    def test_exposant_zero(self):
+        assert power(5, 0) == 1.0
+
+    def test_exposant_negatif(self):
+        assert power(2, -2) == pytest.approx(0.25)
+
+    def test_base_negative(self):
+        assert power(-2, 3) == -8.0
+
+    def test_parametres_invalides_levent_exception(self):
+        with pytest.raises(TypeError, match="La base et l'exposant doivent être des nombres"):
+            power("deux", 3)
