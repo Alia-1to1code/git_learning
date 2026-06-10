@@ -49,6 +49,10 @@ class TestDivide:
         with pytest.raises(ValueError, match="Division par zéro impossible"):
             divide(5, 0)
 
+    def test_division_par_zero_flottant_leve_exception(self):
+        with pytest.raises(ValueError, match="Division par zéro impossible"):
+            divide(10, 0.0)
+
 
 class TestPower:
     def test_cas_classique(self):

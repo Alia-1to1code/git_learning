@@ -20,9 +20,9 @@ def divide(a: float, b: float) -> float:
     """Retourne le quotient de a par b.
 
     Raises:
-        ValueError: si b vaut 0.
+        ValueError: si b vaut 0 ou 0.0.
     """
-    if b == 0:
+    if b == 0 or b == 0.0:
         raise ValueError("Division par zéro impossible.")
     return a / b
 
