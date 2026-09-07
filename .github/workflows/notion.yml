@@ -1,0 +1,34 @@
+name: Log de déploiement Notion
+on:
+  push:
+    branches: [main]
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Créer une entrée dans Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          APP_NAME: ${{ vars.APP_NAME }}
+          RUN_NUMBER: ${{ github.run_number }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          curl -X POST https://api.notion.com/v1/pages \
+            -H "Authorization: Bearer $NOTION_TOKEN" \
+            -H "Content-Type: application/json" \
+            -H "Notion-Version: 2022-06-28" \
+            -d '{
+              "parent": { "database_id": "'"$NOTION_DATABASE_ID"'" },
+              "properties": {
+                "Nom": {
+                  "title": [{ "text": { "content": "Déploiement #'"$RUN_NUMBER"' - '"$APP_NAME"'" } }]
+                },
+                "Statut": {
+                  "select": { "name": "✅ Succès" }
+                },
+                "Commit": {
+                  "rich_text": [{ "text": { "content": "'"${COMMIT_SHA::7}"'" } }]
+                }
+              }
+            }'
