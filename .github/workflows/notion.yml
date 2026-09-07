@@ -2,6 +2,7 @@ name: Log de déploiement Notion
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 jobs:
   log:
     runs-on: ubuntu-latest
